@@ -14,4 +14,4 @@
 - See more button click for show all Technology
 - Arrow Button click for Show modal and Details
 
-### Website URL [https://thriving-pasca-a86bb6.netlify.app/]
+### Website URL [visit](https://thriving-pasca-a86bb6.netlify.app/)
