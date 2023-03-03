@@ -53,12 +53,14 @@ const loadTechnologyDetails = (id) => {
 };
 
 const displayTechnologyDetails = (data) => {
-  console.log(data);
   document.getElementById("modal-title").innerText = data.tool_name;
 
   const modalContent = document.getElementById("modal-content");
 
+  const array = Object.values(data.features);
+
   const div = document.createElement("div");
+  div.classList.add("col");
   div.innerHTML = `
     <div class="d-flex">
       <div class='w-50 p-2 bg-danger bg-opacity-25 border'>
@@ -77,31 +79,35 @@ const displayTechnologyDetails = (data) => {
           ${data.pricing[2].plan}
         </div>
       </div>
-      <div class="d-flex  justify-content-between">
-        <div>
-          <p>Features</p>
-          <ol>
-            <li>${data.features}</li>
+      <div class="d-flex col-12 justify-content-between">
+          <div>
+            <div>
+            <p>Features</p>
+            <ol>
+              <li>${array[0].feature_name}</li>
+              <li>${array[1].feature_name}</li>
+              <li>${array[2].feature_name}</li>
+            </ol>
+          </div>
+          <div>
+            <p>Integrations</p>
+            <ol>
+            <li>${data.integrations[0]}</li>
+            <li>${data.integrations[1]}</li>
+            <li>${data.integrations[2]}</li>
           </ol>
+          </div>
         </div>
-        <div>
-          <p>Integrations</p>
-          <ol>
-          <li>${data.integrations[0]}</li>
-          <li>${data.integrations[1]}</li>
-          <li>${data.integrations[2]}</li>
-        </ol>
         </div>
-      </div>
-      </div>
-      <div class="w-50  p-2 bg-light border position-relative">
-        <img src=${data.image_link[0]} class='img-fluid rounded ' />
-        <span class='position-absolute top-0 d-flex badge text-bg-danger end-0'>${
-          data.accuracy.score * 100
-        }% accuracy</span>
-        <p>${data.input_output_examples[0].input}</p>
-        <p>${data.input_output_examples[0].output}</p>
-      </div>
+          </div>
+        <div class="w-50  p-2 bg-light border position-relative">
+          <img src=${data.image_link[0]} class='img-fluid rounded ' />
+          <span class='position-absolute top-0 d-flex badge text-bg-danger end-0'>${
+            data.accuracy.score * 100
+          }% accuracy</span>
+          <p>${data.input_output_examples[0].input}</p>
+          <p>${data.input_output_examples[0].output}</p>
+        </div>
     </div>
   `;
   modalContent.appendChild(div);
