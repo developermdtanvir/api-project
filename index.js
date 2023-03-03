@@ -1,7 +1,12 @@
 const root = document.getElementById("_root");
+displayLoading();
+
 fetch("https://openapi.programming-hero.com/api/ai/tools")
   .then((res) => res.json())
-  .then((data) => displayTechnology(data.data.tools));
+  .then((data) => {
+    displayTechnology(data.data.tools);
+    hide_the_Loading();
+  });
 
 const displayTechnology = (data) => {
   console.log(data);
@@ -104,9 +109,11 @@ const displayTechnologyDetails = (data) => {
 // show all technology
 
 document.getElementById("show-all").addEventListener("click", () => {
+  displayLoading();
   fetch("https://openapi.programming-hero.com/api/ai/tools")
     .then((res) => res.json())
     .then((data) => {
+      hide_the_Loading();
       data.data.tools.map((data) => {
         const div = document.createElement("div");
         div.classList.add("col");
@@ -141,3 +148,13 @@ document.getElementById("show-all").addEventListener("click", () => {
       });
     });
 });
+
+// loader show for website
+function displayLoading() {
+  let loader = document.querySelector("#loader-container");
+  loader.style.display = "block";
+}
+function hide_the_Loading() {
+  let loader = document.querySelector("#loader-container");
+  loader.style.display = "none";
+}

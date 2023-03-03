@@ -16,6 +16,19 @@
       integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN"
       crossorigin="anonymous"
     ></script>
+
+    <style>
+      .loader-container {
+        width: 120%;
+        height: 120vh;
+        position: fixed;
+        background: #98765433
+          url("https://i.pinimg.com/originals/45/12/4d/45124d126d0f0b6d8f5c4d635d466246.gif")
+          center no-repeat;
+        z-index: 5;
+        display: none;
+      }
+    </style>
   </head>
   <body class="container mx-auto">
     <div class="text-center my-8 space-y-2">
@@ -27,7 +40,9 @@
       id="_root"
       class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4 gy-5 my-5"
     ></div>
-
+    <div id="loader-container" class="loader-container">
+      <div class="spinner"></div>
+    </div>
     <div class="d-flex justify-content-center mb-5">
       <button id="show-all" class="btn btn-primary text-center">
         Show More
