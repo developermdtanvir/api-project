@@ -19,7 +19,7 @@ const displayTechnology = (data) => {
       <li>${data.features[1]}</li>
       <li>${data.features[2]}</li>
     </ol>
-    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+    <h1 class="card-text">${data.name}</h1>
     <hr style="border: 1.5px solid gray">
 
     <div class="d-flex  justify-content-between">
@@ -51,14 +51,42 @@ const displayTechnologyDetails = (data) => {
   const div = document.createElement("div");
   div.innerHTML = `
     <div class="d-flex">
-      <div class='w-50'>
-        <h1>Hello World</h1>
+      <div class='w-50 p-2 bg-danger bg-opacity-25 border'>
+      <p class='fw-bold'>${data.description}</p>
+      <div class="d-flex m-2 justify-content-between">
+        <div class='p-2 text-success'>
+            ${data.pricing[0].price}
+            / ${data.pricing[0].plan}
+        </div>
+        <div class='p-2'>
+          ${data.pricing[1].price} /
+          ${data.pricing[1].plan}
+        </div>
+        <div class='p-2'>
+          ${data.pricing[2].price} 
+          ${data.pricing[2].plan}
+        </div>
+      </div>
+      <div class="d-flex  justify-content-between">
+        <div>
+          <p>Features</p>
+          <ol>
+            <li>${data.features}</li>
+          </ol>
+        </div>
+        <div>
+          <p>Integrations</p>
+          <ol>
+          <li>${data.integrations[0]}</li>
+          <li>${data.integrations[1]}</li>
+          <li>${data.integrations[2]}</li>
+        </ol>
+        </div>
+      </div>
       </div>
       <div class="w-50  p-2 bg-light border">
         <img src=${data.image_link[0]} class='img-fluid rounded' />
-        <p>${
-          data.description ? data.description : "No! Not Yet! Take a break!!!"
-        }</p>
+        
       </div>
     </div>
   `;
