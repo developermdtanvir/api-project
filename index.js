@@ -33,7 +33,7 @@ const displayTechnology = (data) => {
       <span>${data.published_in}</span>
     </div>
     <i class="fa-solid fa-arrow-right btn btn-primary"  data-bs-toggle="modal"
-    data-bs-target="#staticBackdrop" onclick="loadTechnologyDetails(${data.id})"></i>
+    data-bs-target="#technology_modal" onclick="loadTechnologyDetails(${data.id})"></i>
     </div>
   </div>
 </div>
@@ -65,15 +65,15 @@ const displayTechnologyDetails = (data) => {
       <div class='w-50 p-2 bg-danger bg-opacity-25 border'>
       <p class='fw-bold'>${data.description}</p>
       <div class="d-flex m-2 justify-content-between">
-        <div class='p-2 text-success'>
+        <div class='p-2 text-success bg-light mx-2 fw-bold rounded'>
             ${data.pricing[0].price}
             / ${data.pricing[0].plan}
         </div>
-        <div class='p-2'>
+        <div class='p-2 bg-light mx-2 text-danger fw-bold rounded'>
           ${data.pricing[1].price} /
           ${data.pricing[1].plan}
         </div>
-        <div class='p-2'>
+        <div class='p-2 bg-light mx-2 text-success fw-bold rounded'>
           ${data.pricing[2].price} 
           ${data.pricing[2].plan}
         </div>
@@ -100,6 +100,8 @@ const displayTechnologyDetails = (data) => {
         <span class='position-absolute top-0 d-flex badge text-bg-danger end-0'>${
           data.accuracy.score * 100
         }% accuracy</span>
+        <p>${data.input_output_examples[0].input}</p>
+        <p>${data.input_output_examples[0].output}</p>
       </div>
     </div>
   `;
@@ -140,7 +142,7 @@ document.getElementById("show-all").addEventListener("click", () => {
         <span>${data.published_in}</span>
       </div>
       <i class="fa-solid fa-arrow-right btn btn-primary"  data-bs-toggle="modal"
-      data-bs-target="#staticBackdrop" onclick="loadTechnologyDetails(${data.id})"></i>
+      data-bs-target="#technology_modal" onclick="loadTechnologyDetails(${data.id})"></i>
       </div>
     </div>
   </div>
@@ -158,3 +160,8 @@ function hide_the_Loading() {
   let loader = document.querySelector("#loader-container");
   loader.style.display = "none";
 }
+
+// reload page close modal
+// document.getElementById("close_button").addEventListener("click", () => {
+//   window.location.reload();
+// });
