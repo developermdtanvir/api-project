@@ -37,9 +37,15 @@ const displayTechnology = (data) => {
 };
 
 const loadTechnologyDetails = (id) => {
-  fetch(`https://openapi.programming-hero.com/api/ai/tool/${"0" + id}`)
-    .then((res) => res.json())
-    .then((data) => displayTechnologyDetails(data.data));
+  if (id < 10) {
+    fetch(`https://openapi.programming-hero.com/api/ai/tool/${"0" + id}`)
+      .then((res) => res.json())
+      .then((data) => displayTechnologyDetails(data.data));
+  } else {
+    fetch(`https://openapi.programming-hero.com/api/ai/tool/${id}`)
+      .then((res) => res.json())
+      .then((data) => displayTechnologyDetails(data.data));
+  }
 };
 
 const displayTechnologyDetails = (data) => {
@@ -84,9 +90,11 @@ const displayTechnologyDetails = (data) => {
         </div>
       </div>
       </div>
-      <div class="w-50  p-2 bg-light border">
-        <img src=${data.image_link[0]} class='img-fluid rounded' />
-        
+      <div class="w-50  p-2 bg-light border position-relative">
+        <img src=${data.image_link[0]} class='img-fluid rounded ' />
+        <span class='position-absolute top-0 d-flex badge text-bg-danger end-0'>${
+          data.accuracy.score * 100
+        }% accuracy</span>
       </div>
     </div>
   `;
