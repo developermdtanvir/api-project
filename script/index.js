@@ -41,14 +41,21 @@ const displayTechnology = (data) => {
 };
 
 const loadTechnologyDetails = (id) => {
+  displayLoading();
   if (id < 10) {
     fetch(`https://openapi.programming-hero.com/api/ai/tool/${"0" + id}`)
       .then((res) => res.json())
-      .then((data) => displayTechnologyDetails(data.data));
+      .then((data) => {
+        hide_the_Loading();
+        displayTechnologyDetails(data.data);
+      });
   } else {
     fetch(`https://openapi.programming-hero.com/api/ai/tool/${id}`)
       .then((res) => res.json())
-      .then((data) => displayTechnologyDetails(data.data));
+      .then((data) => {
+        hide_the_Loading();
+        displayTechnologyDetails(data.data);
+      });
   }
 };
 
