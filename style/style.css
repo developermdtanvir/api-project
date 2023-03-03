@@ -1,0 +1,10 @@
+.loader-container {
+  width: 120%;
+  height: 120vh;
+  position: fixed;
+  background: #98765433
+    url("https://i.pinimg.com/originals/45/12/4d/45124d126d0f0b6d8f5c4d635d466246.gif")
+    center no-repeat;
+  z-index: 5;
+  display: none;
+}
